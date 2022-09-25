@@ -1,7 +1,7 @@
 from django.contrib.auth import authenticate, login, logout
 from django.db import IntegrityError
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
@@ -9,6 +9,9 @@ from django.core.paginator import Paginator
 import json
 
 from .models import *
+
+def forgot_password(request):
+    return render(request,'network/forgotpassword.html')
 
 
 def index(request):
@@ -96,7 +99,23 @@ def register(request):
     else:
         return render(request, "network/register.html")
 
+def search(request):
+    if request.method == "POST":
 
+        # Attempt to sign user in
+        username = request.POST["query"]
+        user =  User.objects.filter(username = username)
+
+        if user:
+            return redirect(profile,username)
+        else:
+            return render(request, "network/index.html")
+        
+
+        # Check if authentication successful
+         
+    else:
+        return render(request, "network/index.html")
 
 def profile(request, username):
     user = User.objects.get(username=username)
@@ -128,6 +147,51 @@ def profile(request, username):
         "follower_count": follower_count,
         "following_count": following_count
     })
+
+
+
+def editProfile(request):
+
+    if request.method == "POST":
+         
+        fname = request.POST["firstname"]
+        lname = request.POST["lastname"]
+        profile = request.FILES.get("profile")
+        print(f"--------------------------Profile: {profile}----------------------------")
+        cover = request.FILES.get('cover')
+        print(f"--------------------------Cover: {cover}----------------------------")
+
+        # Ensure password matches confirmation
+        password = request.POST["password"]
+        confirmation = request.POST["confirmation"]
+        if password != confirmation:
+            return render(request, "network/editProfile.html", {
+                "message": "Passwords must match."
+            })
+
+        # Attempt to create new user
+        try:
+            user = request.user
+            user.first_name = fname
+            user.last_name = lname
+            if profile is not None:
+                user.profile_pic = profile
+            else:
+                user.profile_pic = "profile_pic/no_pic.png"
+            user.cover = cover           
+            user.save()
+            # Follower.objects.create(user=user)
+        except IntegrityError:
+            return render(request, "network/editProfile.html", {
+                "message": "Username already taken."
+            })
+        login(request, user)
+        return HttpResponseRedirect(reverse("index"))
+    else:
+        return render(request, "network/editProfile.html")
+
+
+
 
 def following(request):
     if request.user.is_authenticated:

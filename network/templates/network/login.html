@@ -10,8 +10,8 @@
     <div class="user-box">
         <div>
             <center>
-                <img src="{% static 'network/Images/logo_icon.png' %}" height="45em" style="margin-bottom: 2vh;">
-                <h3>Log in to Network</h3><br>
+                <img src="{% static 'network/Images/favicon.png' %}" height="45em" style="margin-bottom: 2vh;">
+                <h3>Log in to SoSilly</h3><br>
             </center>
         </div>
     
@@ -30,6 +30,10 @@
         </form>
     
         <div>
+            <center>
+                &nbsp;&nbsp;<a href="{% url 'register' %}">Forgot Password</a>
+            </center>
+
             <center>
                 Don't have an account?&nbsp;&nbsp;<a href="{% url 'register' %}">Sign Up</a>
             </center>
