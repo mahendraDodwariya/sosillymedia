@@ -1,1 +1,1 @@
-web gunicorn Sosilly.wsgi:application --log-file -
+web gunicorn Sosilly.wsgi:apllication --log-file -
