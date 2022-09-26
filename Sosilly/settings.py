@@ -13,8 +13,31 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECRET_KEY = os.environ['SECRET_KEY']
 SECRET_KEY = '13kl@xtukpwe&xj2xoysxe9_6=tf@f8ewxer5n&ifnd46+6$%8'
 
+CORS_ALLOW_CREDENTIALS = True
+
+CORS_ORIGIN_ALLOW_ALL = True
+
+CORS_ALLOW_CREDENTIALS = True
+
+
+CSRF_TRUSTED_ORIGINS =  ['https://sosillymedia.herokuapp.com']
+
+CORS_REPLACE_HTTPS_REFERER = True
+
+CSRF_COOKIE_DOMAIN = 'herokuapp.com'
+
+CORS_ORIGIN_WHITELIST = (
+    'https://sosillymedia.herokuapp.com/',
+    'sosillymedia.herokuapp.com',
+ 
+)
+
+# CSRF_COOKIE_SECURE = env.bool("CSRF_COOKIE_SECURE",False)
+ 
+
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
+
 
 ALLOWED_HOSTS = ["sosillymedia.herokuapp.com","localhost"]
 
