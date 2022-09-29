@@ -36,7 +36,7 @@ CORS_ORIGIN_WHITELIST = (
  
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 
 ALLOWED_HOSTS = ["sosillymedia.herokuapp.com","localhost"]
