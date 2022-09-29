@@ -47,6 +47,8 @@ ALLOWED_HOSTS = ["sosillymedia.herokuapp.com","localhost"]
 INSTALLED_APPS = [
     'network',
     'storages',
+    "whitenoise.runserver_nostatic",
+    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
