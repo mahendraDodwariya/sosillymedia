@@ -146,5 +146,5 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'network/media')
 ]
  
-MEDIA_ROOT = os.path.join(BASE_DIR, 'network/media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'network/mediafiles')
 MEDIA_URL = '/media/' 
