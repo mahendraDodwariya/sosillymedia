@@ -1,6 +1,8 @@
 
 
 import os
+import django_heroku
+import dj_database_url
 SITE_ID = 1 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -10,34 +12,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = os.environ['SECRET_KEY']
 SECRET_KEY = '13kl@xtukpwe&xj2xoysxe9_6=tf@f8ewxer5n&ifnd46+6$%8'
 
-CORS_ALLOW_CREDENTIALS = True
-
-CORS_ORIGIN_ALLOW_ALL = True
-
-CORS_ALLOW_CREDENTIALS = True
-
-
-CSRF_TRUSTED_ORIGINS =  ['https://sosillymedia.herokuapp.com']
-
-CORS_REPLACE_HTTPS_REFERER = True
-
-CSRF_COOKIE_DOMAIN = 'herokuapp.com'
-
-CORS_ORIGIN_WHITELIST = (
-    'https://sosillymedia.herokuapp.com/',
-    'sosillymedia.herokuapp.com',
- 
-)
-
-# CSRF_COOKIE_SECURE = env.bool("CSRF_COOKIE_SECURE",False)
- 
-
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-
+DEBUG = True
 
 ALLOWED_HOSTS = ["sosillymedia.herokuapp.com","localhost"]
 
@@ -55,9 +33,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    "django.middleware.security.SecurityMiddleware",
-    "whitenoise.middleware.WhiteNoiseMiddleware",
-
+    'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -137,7 +113,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
  
- 
+
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR,'network/staticfiles')
@@ -147,4 +123,4 @@ STATICFILES_DIRS = [
 ]
  
 MEDIA_ROOT = os.path.join(BASE_DIR, 'network/media')
-MEDIA_URL = '/media/' 
+MEDIA_URL = '/media/'

@@ -1,1 +1,1 @@
-web: waitress-serve --port=$PORT Sosilly.wsgi:application
+web gunicorn Sosilly.wsgi:application --log-file -
