@@ -1,1 +1,1 @@
-web gunicorn Sosilly.wsgi --log-file -
+web: gunicorn 'Sosilly.wsgi'
