@@ -85,7 +85,6 @@ pyHanko==0.13.2
 pyhanko-certvalidator==0.19.5
 PyJWT==2.6.0
 pyobjc==9.0
-pyobjc-core==9.0
 pyobjc-framework-Accessibility==9.0
 pyobjc-framework-Accounts==9.0
 pyobjc-framework-AddressBook==9.0
