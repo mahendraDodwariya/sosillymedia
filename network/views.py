@@ -8,7 +8,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.core.paginator import Paginator
 import json
 
-from .models import *
+from .models import * 
 
 def forgot_password(request):
     return render(request,'network/forgotpassword.html')
