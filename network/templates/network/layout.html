@@ -221,6 +221,8 @@
                                 </svg>
                             </div>
                             <input type="text" name="query" id="search-box" placeholder="Search">
+                            <input style=" margin-right: -.5em; " class="btn btn-outline-success" type="submit">
+
                         </div>
                     </form>
                 </nav>
@@ -232,6 +234,9 @@
                                 You might know
                             </div>
                             {% for suggestion in suggestions %}
+                                 
+                                    
+                                    
                                 <div class="suggestion-user">
                                     <div>
                                         <a href="{% url 'profile' suggestion.username %}">
@@ -253,14 +258,16 @@
                                         <button class="btn btn-outline-success" type="button" onclick="follow_user(this,'{{suggestion.username}}','suggestion')">Follow</button>
                                     </div>
                                 </div>
+                               
+                                
                             {% empty %}
                                     <div style="text-align: center; border-bottom: .5px solid #e6ecf0; padding: 10px 15px;">
                                         <span class="grey" style="font-size: .9em;">No suggestions available.</span>
                                     </div>
                             {% endfor %}
-                            <div class="suggestion-footer">
-                                <a href="#">Show more</a>
-                            </div>
+                            <!-- <div class="suggestion-footer">
+                                <a href="{% url 'index' %}">Show more</a>
+                            </div> -->
                         </div>
                     {% else %}
                         <div class="guest-box">

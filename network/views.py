@@ -16,7 +16,7 @@ def forgot_password(request):
 
 def index(request):
     all_posts = Post.objects.all().order_by('-date_created')
-    paginator = Paginator(all_posts, 10)
+    paginator = Paginator(all_posts, 5)
     page_number = request.GET.get('page')
     if page_number == None:
         page_number = 1
@@ -25,7 +25,7 @@ def index(request):
     suggestions = []
     if request.user.is_authenticated:
         followings = Follower.objects.filter(followers=request.user).values_list('user', flat=True)
-        suggestions = User.objects.exclude(pk__in=followings).exclude(username=request.user.username).order_by("?")[:6]
+        suggestions = User.objects.exclude(pk__in=followings).exclude(username=request.user.username).order_by("?")
     return render(request, "network/index.html", {
         "posts": posts,
         "suggestions": suggestions,

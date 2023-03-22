@@ -168,7 +168,11 @@
                                                 <div style="flex: 1;">
                                                     <div class="comment-input-div">
                                                         <form class="comment-form" onsubmit="return write_comment(this)">
+                                                             
                                                             <input type="text" name="comment" class="comment-input" placeholder="Write a comment...">
+                                                            <!-- <input class="btn btn-outline-success" type="submit"> -->
+                                                             
+                                                            
                                                         </form>
                                                     </div>
                                                 </div>
@@ -230,8 +234,7 @@
 
     <script>
         function alertFunc() {
-            console.print("clicked");
-          alert("Only Creater has the access!!!");
+          alert("Only Post Creater can perform the action!");
         }
     </script>
     
