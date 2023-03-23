@@ -31,11 +31,15 @@
     
         <div>
             <center>
-                &nbsp;&nbsp;<a href="{% url 'register' %}">Forgot Password</a>
+                &nbsp;&nbsp;<a href="{% url 'password_reset' %}">Forgot Password</a>
             </center>
-
+            <br>
             <center>
                 Don't have an account?&nbsp;&nbsp;<a href="{% url 'register' %}">Sign Up</a>
+            </center>
+            <br>
+            <center>
+                    <a href="{% url 'index' %}">Cancel</a>
             </center>
         </div>
     </div>

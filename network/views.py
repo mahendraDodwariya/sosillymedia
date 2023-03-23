@@ -162,14 +162,14 @@ def editProfile(request):
         print(f"--------------------------Cover: {cover}----------------------------")
 
         # Ensure password matches confirmation
-        password = request.POST["password"]
-        confirmation = request.POST["confirmation"]
-        if password != confirmation:
-            return render(request, "network/editProfile.html", {
-                "message": "Passwords must match."
-            })
+        # password = request.POST["password"]
+        # confirmation = request.POST["confirmation"]
+        # if password != confirmation:
+        #     return render(request, "network/editProfile.html", {
+        #         "message": "Passwords must match."
+        #     })
 
-        # Attempt to create new user
+       
         try:
             user = request.user
             user.first_name = fname
@@ -177,8 +177,12 @@ def editProfile(request):
             if profile is not None:
                 user.profile_pic = profile
             else:
-                user.profile_pic = "profile_pic/no_pic.png"
-            user.cover = cover           
+                user.profile_pic = user.profile_pic
+
+            if cover is not None:
+                user.cover = cover
+            else:
+                user.cover = user.cover        
             user.save()
             # Follower.objects.create(user=user)
         except IntegrityError:

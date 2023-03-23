@@ -24,24 +24,24 @@
             <div class="form-group">
                 <div class="form-row align-items-center">
                 <div class="col-sm-6 my-1">
-                    <input class="form-control inp fname" type="text" name="firstname" placeholder="First Name *" autocomplete="off" autofocus>
+                    <input class="form-control inp fname" type="text" name="firstname" placeholder="First Name *" autocomplete="off" autofocus required>
                     <span class="star small"></span>
                 </div>
                 <div class="col-sm-6 my-1">
-                    <input class="form-control inp lname" type="text" name="lastname" placeholder="Last Name *" autocomplete="off">
+                    <input class="form-control inp lname" type="text" name="lastname" placeholder="Last Name *" autocomplete="off" required>
                     <span class="star small"></span>
                 </div>
             </div>
             </div>
              
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <input class="form-control inp pswd" type="password" name="password" placeholder="new Password *" autocomplete="off">
                 <span class="star small"></span>
             </div>
             <div class="form-group">
                 <input class="form-control inp cpswd" type="password" name="confirmation" placeholder="Confirm Password *" autocomplete="off">
                 <span class="star small"></span>
-            </div>
+            </div> -->
             <div class="form-group">
                 <div class="custom-file">
                     <input type="file" name="profile" class="form-control custom-file-input" id="profile" accept="image/jpeg,image/png,image/webp,image/gif" data-focusable="true" aria-describedby="inputGroupFileAddon01">
@@ -59,10 +59,15 @@
 
 
             <center>
-                <input class="btn btn-primary" type="submit" value="Save" style="margin-top: 10px; width: 95%;" diabled>
+                <input class="btn btn-primary" type="submit" value="Save" style="margin-top: 10px; width: 95%;" >
             </center>
         </form>
     
+        <div>
+            <center>
+                &nbsp;&nbsp;<a href="{% url 'passwordchange' %}">Change Password</a>
+            </center>
+        </div> <br>
         <div>
             <center>
                 &nbsp;&nbsp;<a href="{% url 'profile' user.username %}">Cancel</a>
