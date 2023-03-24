@@ -33,6 +33,30 @@ def index(request):
         'profile': False
     })
 
+def following_to(request):
+    follows = []
+    suggestions = []
+    followings = []
+    if request.user.is_authenticated:
+        follows = Follower.objects.filter(followers=request.user).values_list('user', flat=True)
+        suggestions = User.objects.exclude(pk__in=follows).exclude(username=request.user.username).order_by("?")[:6]
+        followings = User.objects.filter(pk__in=follows).exclude(username=request.user.username).order_by("?")
+
+    return render(request,"network/following_to.html",{
+        "followings":followings,
+        "suggestions":suggestions
+    })
+def follower(request):
+    follows = []
+    followers = []
+    if request.user.is_authenticated:
+        follows = Follower.objects.filter(followers=request.user).values_list('user', flat=True)
+        followers =Follower.objects.get(user=request.user).followers.all()
+
+    return render(request,"network/follower.html",{
+        "followers":followers,
+    })
+        
 
 def login_view(request):
     if request.method == "POST":

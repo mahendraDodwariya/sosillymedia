@@ -245,6 +245,10 @@
                             </div>
                             {% for suggestion in suggestions %}
                                  
+                                
+                                {% if suggestion.username != "admin" %}
+                                    
+                                 
                                     
                                     
                                 <div class="suggestion-user">
@@ -268,8 +272,10 @@
                                         <button class="btn btn-outline-success" type="button" onclick="follow_user(this,'{{suggestion.username}}','suggestion')">Follow</button>
                                     </div>
                                 </div>
-                               
+                         
                                 
+                               
+                            {% endif %} 
                             {% empty %}
                                     <div style="text-align: center; border-bottom: .5px solid #e6ecf0; padding: 10px 15px;">
                                         <span class="grey" style="font-size: .9em;">No suggestions available.</span>

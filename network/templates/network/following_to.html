@@ -1,0 +1,94 @@
+{% extends 'network/index.html' %}
+
+{% load static %}
+
+{% block profile %}
+<!-- <center> -->
+     <nav class="head heading">    
+             <h4>  <strong>Following</strong></h4>
+           
+    </nav>
+    <br>
+<!-- </center> -->
+{% for suggestion in followings %}
+                                 
+                                    
+                                    
+<div class="suggestion-user">
+    <div>
+        <a href="{% url 'profile' suggestion.username %}">
+            <div class="small-profilepic" style="background-image: url(/media/{{suggestion.profile_pic}})"></div>
+        </a>
+    </div>
+    <div class="user-details">
+        <a href="{% url 'profile' suggestion.username %}">
+            <div id="user-name">
+                
+                <strong>
+                    {{suggestion.first_name}} {{suggestion.last_name}}
+                </strong>
+            </div>
+            <div class="grey">@{{suggestion.username}}</div>
+        </a>
+    </div>
+    <div>
+        <button class="btn btn-outline-success" type="button" onclick="unfollow_user(this,'{{suggestion.username}}','suggestion')">unfollow</button>
+    </div>
+</div>
+
+
+{% empty %}
+    <div style="text-align: center; border-bottom: .5px solid #e6ecf0; padding: 10px 15px;">
+        <span class="grey" style="font-size: .9em;">You are not following any user.</span>
+    </div>
+{% endfor %}
+<br>
+<br>
+<!-- <center> -->
+
+    <nav class="mx-3">    
+        <h5>  <strong>You might know</strong></h5>
+        <hr>
+</nav>
+      <br>
+<!-- </center> -->
+{% for suggestion in suggestions %}
+                                 
+                    
+
+{% if suggestion.username != "admin" %}
+    
+ 
+    
+                                    
+<div class="suggestion-user">
+    <div>
+        <a href="{% url 'profile' suggestion.username %}">
+            <div class="small-profilepic" style="background-image: url(/media/{{suggestion.profile_pic}})"></div>
+        </a>
+    </div>
+    <div class="user-details">
+        <a href="{% url 'profile' suggestion.username %}">
+            <div id="user-name">
+                
+                <strong>
+                    {{suggestion.first_name}} {{suggestion.last_name}}
+                </strong>
+            </div>
+            <div class="grey">@{{suggestion.username}}</div>
+        </a>
+    </div>
+    <div>
+        <button class="btn btn-outline-success" type="button" onclick="follow_user(this,'{{suggestion.username}}','suggestion')">Follow</button>
+    </div>
+</div>
+{% endif %}
+
+{% empty %}
+    <div style="text-align: center; border-bottom: .5px solid #e6ecf0; padding: 10px 15px;">
+        <span class="grey" style="font-size: .9em;">No suggestions available.</span>
+    </div>
+{% endfor %}
+        
+{% endblock %}
+
